@@ -1,17 +1,22 @@
 import os
+import numpy as np
 from setuptools import setup, find_packages
+from Cython.Build import cythonize
+
+
+os.environ["CFLAGS"] = "-I" + np.get_include()
+
 
 def readfile(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
     name='glove',
-    version='1.0.1',
+    version='1.0.2',
     description='Python package for computing embeddings from co-occurence matrices',
     long_description=readfile('README.md'),
-    ext_modules=[],
     packages=find_packages(),
-    py_modules = [],
+    py_modules=[],
     author='Jonathan Raiman',
     author_email='jraiman at mit dot edu',
     url='https://github.com/JonathanRaiman/glove',
@@ -25,10 +30,11 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3.3'
     ],
-    setup_requires = [],
+    setup_requires=[],
     install_requires=[
         'cython',
         'numpy'
     ],
+    ext_modules=cythonize("glove/glove_inner.pyx"),
     include_package_data=True,
 )
