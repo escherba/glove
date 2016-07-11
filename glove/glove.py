@@ -2,8 +2,8 @@ import re, gzip, pickle, time
 from multiprocessing import Queue, Lock
 import threading
 import numpy as np
-import pyximport
-pyximport.install(setup_args={"include_dirs": np.get_include()})
+# import pyximport
+# pyximport.install(setup_args={"include_dirs": np.get_include()})
 
 from .glove_inner import train_glove
 
