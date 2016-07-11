@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 from Cython.Build import cythonize
 
 
-os.environ["CFLAGS"]="-I" + np.get_include()
+os.environ["CFLAGS"] = "-I" + np.get_include()
 
 
 def readfile(fname):
@@ -12,7 +12,7 @@ def readfile(fname):
 
 setup(
     name='glove',
-    version='1.0.1',
+    version='1.0.2',
     description='Python package for computing embeddings from co-occurence matrices',
     long_description=readfile('README.md'),
     packages=find_packages(),
